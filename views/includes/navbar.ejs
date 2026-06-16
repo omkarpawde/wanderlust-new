@@ -1,9 +1,10 @@
 <style>
+  /*  */
   .btn-search{
     background-color: #fe424d;
     color:#fff;
     border-radius: 25px;
-    padding: 0 rem 0 rem;
+    padding: 0.5rem 1rem;
   }
   .btn-search:hover{
     background-color: #fe424d;
@@ -13,10 +14,11 @@
     display: inline;
     margin-right: 0.5rem;
   }
-  .search-inp{
-    border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
-  }
+  /*  */
+  .search-inp {
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+}
 </style>
 
 <nav class="navbar navbar-expand-md bg-light border-bottom sticky-top">
@@ -39,7 +41,7 @@
         <a class="nav-link" href="/listings">Explore</a>
       </div>
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
+        <form class="d-flex flex-wrap gap-2" role="search">
           <input class="form-control me-2 search-inp" type="search" placeholder="Search destination"/>
            <button class="btn btn-search" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>Search
