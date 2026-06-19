@@ -4,24 +4,28 @@ const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listings.js");
 
-main()
-  .then(() => {
-    console.log("connection successfully");
-    initDB();
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 async function main() {
   await mongoose.connect(process.env.ATLASDB_URL);
+  console.log("Connection successful");
+  await initDB();
+  mongoose.connection.close();
 }
+
+main().catch((err) => {
+  console.log(err);
+});
 
 const initDB = async () => {
   await Listing.deleteMany({});
-  initData.data = initData.data.map((obj) => ({
+
+  const userId = new mongoose.Types.ObjectId("6a3013a472b91298df8679d6");
+
+  const listings = initData.data.map((obj) => ({
     ...obj,
-    owner: "omkarpawde964_db_user",
+    owner: userId,
   }));
-  await Listing.insertMany(initData.data);
-  console.log("data was initialized");
+
+  await Listing.insertMany(listings);
+
+  console.log("Database initialized successfully!");
 };
